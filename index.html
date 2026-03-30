@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GoldenWeb Platform Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --blue: #1a1a1a;
+      --blue-dark: #000000;
+      --blue-bg: #F5EDD6;
+      --blue-pale: #FAF4E6;
+      --green: #137333;
+      --green-bg: #e6f4ea;
+      --amber: #b45309;
+      --amber-bg: #fef3c7;
+      --purple: #5b21b6;
+      --purple-bg: #f5f3ff;
+      --gray-1: #202124;
+      --gray-2: #3c4043;
+      --gray-3: #5f6368;
+      --gray-4: #80868b;
+      --gray-5: #dadce0;
+      --gray-6: #f1f3f4;
+      --gray-7: #f8f9fa;
+      --white: #ffffff;
+      --page-bg: #e8eaed;
+      --gold: #B8860B;
+      --gold-light: #D4A017;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      background: var(--page-bg);
+      color: var(--gray-1);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    /* ─── LAYOUT ─── */
+    .layout {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* ─── MAIN CONTENT ─── */
+    .main {
+      margin-left: 0;
+      flex: 1;
+      padding: 40px 24px 80px;
+    }
+
+    /* ─── DOCUMENT PAGE ─── */
+    .doc {
+      background: var(--white);
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 72px 88px 96px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 4px 24px rgba(0, 0, 0, 0.08);
+      min-height: 100vh;
+    }
+
+    /* ─── DOC HEADER ─── */
+    .doc-head {
+      border-bottom: 2px solid var(--gray-5);
+      padding-bottom: 28px;
+      margin-bottom: 40px;
+    }
+
+    .doc-head .breadcrumb {
+      font-size: 11px;
+      color: var(--gray-4);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .doc-head h1 {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--gray-1);
+      letter-spacing: -0.4px;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .doc-head .meta {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: 12px;
+      color: var(--gray-4);
+      margin-top: 12px;
+    }
+
+    .doc-head .meta span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* ─── HEADINGS ─── */
+    h2 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--gray-1);
+      margin: 52px 0 16px;
+      padding-top: 8px;
+      scroll-margin-top: 20px;
+    }
+
+    h2::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 3px;
+      background: var(--gold);
+      margin-bottom: 10px;
+      border-radius: 2px;
+    }
+
+    h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--gray-2);
+      margin: 28px 0 10px;
+      scroll-margin-top: 20px;
+    }
+
+    h4 {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gray-4);
+      margin: 20px 0 8px;
+    }
+
+    p {
+      font-size: 14px;
+      color: var(--gray-2);
+      line-height: 1.75;
+      margin-bottom: 12px;
+    }
+
+    /* ─── CHIPS / BADGES ─── */
+    .chip {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 9px;
+      border-radius: 12px;
+      vertical-align: middle;
+    }
+
+    .chip-blue {
+      background: var(--blue-bg);
+      color: var(--blue-dark);
+    }
+
+    .chip-green {
+      background: var(--green-bg);
+      color: var(--green);
+    }
+
+    .chip-amber {
+      background: var(--amber-bg);
+      color: var(--amber);
+    }
+
+    .chip-purple {
+      background: var(--purple-bg);
+      color: var(--purple);
+    }
+
+    .chip-gray {
+      background: var(--gray-6);
+      color: var(--gray-3);
+    }
+
+    /* ─── CALLOUTS ─── */
+    .callout {
+      display: flex;
+      gap: 14px;
+      padding: 14px 18px;
+      border-radius: 6px;
+      margin: 18px 0;
+      font-size: 13.5px;
+      line-height: 1.65;
+      color: var(--gray-2);
+    }
+
+    .callout-icon {
+      font-size: 16px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .callout-blue {
+      background: var(--blue-pale);
+      border-left: 3px solid var(--gold);
+    }
+
+    .callout-green {
+      background: var(--green-bg);
+      border-left: 3px solid var(--green);
+    }
+
+    .callout-amber {
+      background: var(--amber-bg);
+      border-left: 3px solid var(--amber);
+    }
+
+    .callout-purple {
+      background: var(--purple-bg);
+      border-left: 3px solid var(--purple);
+    }
+
+    .callout strong {
+      color: var(--gray-1);
+    }
+
+    /* ─── TABLES ─── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin: 16px 0 24px;
+    }
+
+    thead tr {
+      background: var(--gray-7);
+      border-bottom: 2px solid var(--gray-5);
+    }
+
+    thead th {
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 12px;
+      color: var(--gray-3);
+      letter-spacing: 0.03em;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid var(--gray-6);
+    }
+
+    tbody tr:last-child {
+      border-bottom: none;
+    }
+
+    tbody td {
+      padding: 10px 14px;
+      color: var(--gray-2);
+      vertical-align: top;
+      line-height: 1.6;
+    }
+
+    .mono {
+      font-family: 'Roboto Mono', 'Courier New', monospace;
+      font-size: 11.5px;
+      background: var(--gray-6);
+      padding: 2px 6px;
+      border-radius: 3px;
+      color: var(--gray-2);
+    }
+
+    /* ─── CARD GRID ─── */
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 16px 0;
+    }
+
+    .card {
+      border: 1px solid var(--gray-5);
+      border-radius: 8px;
+      padding: 18px 20px;
+      background: var(--white);
+    }
+
+    .card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 2px 8px rgba(184, 134, 11, 0.12);
+    }
+
+    .card-icon {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .card h5 {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--gray-1);
+      margin-bottom: 5px;
+    }
+
+    .card p {
+      font-size: 12.5px;
+      color: var(--gray-3);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* ─── COMPACT STEPS ─── */
+    .flow {
+      margin: 12px 0 20px;
+    }
+
+    .flow-step {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 5px 0;
+      font-size: 13.5px;
+      color: var(--gray-2);
+      line-height: 1.65;
+      border-bottom: 1px solid var(--gray-6);
+    }
+
+    .flow-step:last-child {
+      border-bottom: none;
+    }
+
+    .flow-num {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--gold);
+      min-width: 18px;
+      flex-shrink: 0;
+    }
+
+    .flow-step strong {
+      color: var(--gray-1);
+    }
+
+    .flow-note {
+      display: none;
+    }
+
+    /* ─── UL/OL ─── */
+    ul.doc-ul,
+    ol.doc-ol {
+      padding-left: 20px;
+      margin: 10px 0 16px;
+    }
+
+    ul.doc-ul li,
+    ol.doc-ol li {
+      font-size: 13.5px;
+      color: var(--gray-2);
+      line-height: 1.7;
+      margin-bottom: 5px;
+    }
+
+    ul.doc-ul li::marker {
+      color: var(--gold);
+    }
+
+    /* ─── DIVIDER ─── */
+    hr {
+      border: none;
+      border-top: 1px solid var(--gray-5);
+      margin: 36px 0;
+    }
+
+    /* ─── CODE BLOCK ─── */
+    .code-block {
+      background: #f8f9fa;
+      border: 1px solid var(--gray-5);
+      border-radius: 6px;
+      padding: 16px 20px;
+      font-family: 'Roboto Mono', 'Courier New', monospace;
+      font-size: 12px;
+      line-height: 1.75;
+      color: var(--gray-2);
+      overflow-x: auto;
+      margin: 14px 0;
+    }
+
+    .code-block .cm {
+      color: #6a9955;
+    }
+
+    .code-block .kw {
+      color: var(--blue);
+      font-weight: 600;
+    }
+
+    .code-block .st {
+      color: #b45309;
+    }
+
+    .code-block .fn {
+      color: #137333;
+    }
+
+    /* ─── SECTION DIVIDER ─── */
+    .section-break {
+      height: 1px;
+      background: linear-gradient(to right, var(--gold), transparent);
+      margin: 48px 0 0;
+      opacity: 0.3;
+    }
+
+    /* ─── PRESET CARD ─── */
+    .preset-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+      margin: 16px 0;
+    }
+
+    .preset-card {
+      border: 1px solid var(--gray-5);
+      border-radius: 8px;
+      padding: 16px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .preset-card:hover {
+      border-color: var(--gold);
+      background: var(--blue-pale);
+    }
+
+    .preset-card .preset-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--gray-1);
+      margin-bottom: 4px;
+    }
+
+    .preset-card .preset-desc {
+      font-size: 11.5px;
+      color: var(--gray-4);
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+
+    .preset-card .preset-workflows {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .preset-chip {
+      font-size: 10px;
+      background: var(--gray-6);
+      color: var(--gray-3);
+      padding: 2px 7px;
+      border-radius: 10px;
+    }
+
+    /* ─── FOOTER ─── */
+    .doc-footer {
+      margin-top: 64px;
+      padding-top: 20px;
+      border-top: 1px solid var(--gray-5);
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--gray-4);
+    }
+
+    /* ─── ACCORDION ─── */
+    .accordion {
+      margin: 16px 0 24px;
+      border: 1px solid var(--gray-5);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .accordion details {
+      border-bottom: 1px solid var(--gray-5);
+    }
+
+    .accordion details:last-child {
+      border-bottom: none;
+    }
+
+    .accordion summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 13px 18px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--gray-1);
+      cursor: pointer;
+      list-style: none;
+      user-select: none;
+      background: var(--white);
+      transition: background 0.12s;
+    }
+
+    .accordion summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .accordion summary:hover {
+      background: var(--gray-7);
+    }
+
+    .accordion summary::after {
+      content: '+';
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-left: 16px;
+      transition: transform 0.15s;
+    }
+
+    .accordion details[open] summary {
+      border-left: 3px solid var(--gold);
+    }
+
+    .accordion details[open] summary::after {
+      content: '−';
+    }
+
+    .accordion-body {
+      padding: 12px 18px 16px;
+      font-size: 13.5px;
+      color: var(--gray-2);
+      line-height: 1.7;
+      border-top: 1px solid var(--gray-5);
+      background: var(--white);
+    }
+
+    .accordion-body p {
+      margin-bottom: 8px;
+    }
+
+    .accordion-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .accordion-cta {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gray-1);
+      text-decoration: none;
+      border: 1px solid var(--gray-1);
+      padding: 5px 14px;
+      border-radius: 4px;
+      transition: all 0.12s;
+    }
+
+    .accordion-cta:hover {
+      background: var(--gray-1);
+      border-color: var(--gray-1);
+      color: white;
+    }
+
+    /* ─── COVERAGE TABLE ─── */
+    .coverage-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    .coverage-table td {
+      padding: 9px 14px;
+      border: 1px solid var(--gray-5);
+      color: var(--gray-2);
+      vertical-align: middle;
+    }
+
+    .coverage-table td.cat-green {
+      width: 220px;
+      font-size: 13px;
+      border-left: 3px solid var(--green);
+    }
+
+    .coverage-table tr.coverage-group td {
+      background: var(--gray-1);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 7px 14px;
+      border-color: var(--gray-1);
+    }
+
+    /* ─── AUTOMATION NAME CELLS ─── */
+    td.cat-blue {
+      border-left: 3px solid var(--gold);
+      background: var(--blue-pale);
+    }
+
+    td.cat-amber {
+      border-left: 3px solid var(--amber);
+      background: var(--amber-bg);
+    }
+
+    td.cat-purple {
+      border-left: 3px solid var(--purple);
+      background: var(--purple-bg);
+    }
+
+    td.cat-green {
+      border-left: 3px solid var(--green);
+      background: var(--green-bg);
+    }
+
+    @media (max-width: 900px) {
+      .main {
+        margin-left: 0;
+      }
+
+      .doc {
+        padding: 40px 32px;
+      }
+
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .preset-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="layout">
+
+    <!-- ─── MAIN ─── -->
+    <main class="main">
+      <div class="doc">
+
+        <!-- HEADER -->
+        <div class="doc-head">
+          <h1>GoldenWeb Automation Platform</h1>
+          <p style="font-size:15px; color:var(--gray-3); margin:0;">Technical reference for the full platform:
+            automations, bulk operations, AI agents, prompt system, GSC/GA integration.</p>
+          <div class="meta">
+            <span>📅 March 2026</span>
+          </div>
+        </div>
+
+
+        <!-- ═══════════════════════════════════
+       PROJECT REPORT
+  ═══════════════════════════════════ -->
+        <h2 id="project-report"> What Was Done</h2>
+
+        <p style="font-size:13px; color:var(--gray-4); font-style:italic;">Please click each dropdown below to review
+          the overview and screens.</p>
+
+        <div class="accordion">
+
+          <details>
+            <summary>Platform documentation &amp; how-to guides</summary>
+            <div class="accordion-body">
+              <p>Step-by-step guides covering every part of the platform: adding a store, running automations, reviewing
+                proposals, bulk import/export, and more. Built directly into the dashboard.</p>
+              <a class="accordion-cta" href="https://dashboard.implementations.goldenweb.net/dashboard/docs">View
+                documentation →</a>
+            </div>
+          </details>
+
+          <details>
+            <summary>Rebuilt Shopify authentication from the ground up</summary>
+            <div class="accordion-body">
+              <p>The existing auth system was broken and deprecated, blocking all store operations. Replaced with a
+                clean connection to the Shopify Admin API. Per-store and multi-store API key support.</p>
+              <a class="accordion-cta" href="https://dashboard.implementations.goldenweb.net/dashboard/home">View
+                Shopify capabilities →</a>
+            </div>
+          </details>
+
+          <details>
+            <summary>Fixed and unified all automations under one platform</summary>
+            <div class="accordion-body">
+              <p>Individual automations were scattered and running independently with no shared infrastructure. All 15
+                are now under a single engine. Re-running the same automation never creates duplicate proposals.</p>
+              <a class="accordion-cta"
+                href="https://dashboard.implementations.goldenweb.net/dashboard/stores/11/workflows">View all
+                automations →</a>
+            </div>
+          </details>
+
+          <details>
+            <summary>Automations MCP server: run workflows directly from Claude</summary>
+            <div class="accordion-body">
+              <p>The platform exposes an MCP server at <span
+                  class="mono">api.implementations.goldenweb.net/mcp/mcp</span>. Claude Code connects via a personal API
+                key and runs the full loop: analyse, review, approve, apply to Shopify.</p>
+              <ul class="doc-ul" style="margin:10px 0 6px;">
+                <li>Browse available SEO workflows and categories</li>
+                <li>Start analysis with inline params or staged data</li>
+                <li>Block until analysis completes, returns proposal summary</li>
+                <li>Review generated proposals with status filters</li>
+                <li>Bulk-approve all pending proposals</li>
+                <li>Enqueue approved proposals for Shopify write</li>
+                <li>Track execution progress (applied / failed / skipped)</li>
+                <li>Start meta title + description workflows for a single URL</li>
+                <li>Session re-entry: see what completed while away</li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>Shopify MCP in Claude Web: new capabilities unlocked</summary>
+            <div class="accordion-body">
+              <p>Claude Web now has direct access to the Shopify MCP toolset, enabling full operational control across
+                catalog, commerce, content, bulk pipelines, and validation flows.</p>
+              <ul class="doc-ul" style="margin:10px 0 6px;">
+                <li>Store and catalog intelligence: shop info, markets, price lists, blogs, articles, and tag operations
+                </li>
+                <li>Product operations: create, update, delete products; bulk variant create/update/delete; detailed
+                  variant inspection</li>
+                <li>Customer operations: search and paginate customers; create/update/delete; merge records; manage
+                  addresses</li>
+                <li>Order operations: query and inspect orders, update metadata, create/complete draft orders,
+                  cancel/close/reopen, mark paid, fulfill, refund</li>
+                <li>Inventory operations: list locations, inspect inventory items and per-location levels, set on-hand
+                  quantities</li>
+                <li>Metafield operations: read, create/update, delete metafields, and inspect metafield definitions by
+                  owner type</li>
+                <li>Generic resource access: list resource types, query sampled datasets, fetch resources by ID or
+                  handle</li>
+                <li>GraphQL access: execute read-only Shopify GraphQL queries with mutation blocking for safety</li>
+                <li>Bulk data pipelines: start export/import jobs, poll status, list active jobs, and cancel running
+                  jobs</li>
+                <li>Theme workspace bootstrap: enumerate themes, prepare duplication/rename mutation templates, and
+                  generate workspace setup files</li>
+                <li>URL validation at scale: stage large URL sets, run async validation, poll job status, and export
+                  results</li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>Full UI dashboard with secure Google OAuth</summary>
+            <div class="accordion-body">
+              <p>Stores, automations, proposals, and results are all managed from one dashboard. No command-line access
+                needed. Login via Google OAuth. Workflow runs and execution results are visible in real time.</p>
+            </div>
+          </details>
+
+          <details>
+            <summary>Review and approval pipeline</summary>
+            <div class="accordion-body">
+              <p>Every automation generates proposals first. Nothing touches a live store until a human approves.
+                Proposals can be approved individually or in bulk. Rejected ones are discarded.</p>
+              <a class="accordion-cta"
+                href="https://dashboard.implementations.goldenweb.net/dashboard/stores/11/proposals">See how it works
+                →</a>
+            </div>
+          </details>
+
+          <details>
+            <summary>Prompt management: global and per-store, with A/B testing</summary>
+            <div class="accordion-body">
+              <p>AI instructions use a layered prompt system. Platform-wide defaults can be overridden per store so each
+                client gets outputs matched to their tone and terminology. A/B testing is included to compare prompt
+                versions before rolling them out.</p>
+              <a class="accordion-cta" href="https://dashboard.implementations.goldenweb.net/dashboard/prompts">View
+                prompt system →</a>
+            </div>
+          </details>
+
+          <details>
+            <summary>CrewAI agents for title and description writing with self-review</summary>
+            <div class="accordion-body">
+              <p>Two AI agents run in sequence: a Writer generates candidates, a Reviewer scores them on accuracy and
+                SEO fit. If nothing passes, the critique goes back to the Writer for another attempt.</p>
+            </div>
+          </details>
+
+          <details>
+            <summary>Rollback system: one click to revert any change</summary>
+            <div class="accordion-body">
+              <p>Before every execution, the platform snapshots every field it will change. If anything goes wrong, the
+                full change set can be reversed. Covers titles, descriptions, alt text, links, redirects, page content,
+                and headings.</p>
+              <a class="accordion-cta"
+                href="https://dashboard.implementations.goldenweb.net/dashboard/stores/11/snapshots">View rollback
+                system →</a>
+            </div>
+          </details>
+
+          <details>
+            <summary>Bulk import and export: all resources and metafields, no row limits</summary>
+            <div class="accordion-body">
+              <p>Products, collections, pages, articles, redirects, metafields, customers: all can be exported,
+                modified, and re-imported in bulk. Millions of rows without timeouts or rate limit errors.</p>
+              <a class="accordion-cta"
+                href="https://dashboard.implementations.goldenweb.net/dashboard/stores/11/jobs">View bulk module →</a>
+            </div>
+          </details>
+
+          <details>
+            <summary>Live GSC and GA4 integration for report file, + data feeds allow building atumated dahboards/
+            </summary>
+            <div class="accordion-body">
+              <p> Clicks, impressions, CTR, and ranking position are available per page or site-wide.</p>
+              <a class="accordion-cta"
+                href="https://dashboard.implementations.goldenweb.net/dashboard/stores/11/analytics">View GSC / GA
+                integration →</a>
+            </div>
+          </details>
+
+          <details>
+            <summary>Presets: saved workflow configurations</summary>
+            <div class="accordion-body">
+              <p>Presets are saved workflow configs available from the dashboard. Pick one and the automation list,
+                order, and parameters load automatically.</p>
+              <a class="accordion-cta"
+                href="https://dashboard.implementations.goldenweb.net/dashboard/stores/11/workflows/22">View presets
+                →</a>
+            </div>
+          </details>
+
+        </div>
+
+        <div class="section-break"></div>
+
+        <!-- ═══════════════════════════════════
+       SECURITY INCIDENT
+  ═══════════════════════════════════ -->
+        <h2 id="security">Security Incident: March 2026</h2>
+
+        <p>On 1 March 2026 the server was compromised via CVE-2026-24841, a command injection flaw in Dokploy v0.25.6.
+          The attacker got shell access inside the Next.js container and tried to install a cryptocurrency miner, which
+          failed. No host compromise, no data exfiltration, no persistence. Infrastructure has been hardened and
+          rebuilt.</p>
+
+        <div class="accordion" style="margin-top:16px;">
+          <details>
+            <summary>Actions taken &amp; current security posture</summary>
+            <div class="accordion-body">
+              <div class="flow">
+                <div class="flow-step"><span class="flow-num">01</span><span>Dokploy updated to
+                    <strong>v0.28.2</strong>, patches CVE-2026-24841</span></div>
+                <div class="flow-step"><span class="flow-num">02</span><span>All secrets rotated: Clerk keys, DB
+                    passwords, Shopify tokens, JWT secrets</span></div>
+                <div class="flow-step"><span class="flow-num">03</span><span>SSH password authentication disabled,
+                    <strong>key-only</strong> enforced</span></div>
+                <div class="flow-step"><span class="flow-num">04</span><span>Both containers rebuilt from clean images —
+                    full malware scan passed</span></div>
+                <div class="flow-step"><span class="flow-num">05</span><span>Traefik access logging enabled with 30-day
+                    rotation for future forensics</span></div>
+                <div class="flow-step"><span class="flow-num">06</span><span>CrowdSec active — 349 attacker IPs banned,
+                    106,450 SSH attempts blocked</span></div>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <div class="section-break"></div>
+      </div>
+    </main>
+  </div>
+</body>
+
+</html>
